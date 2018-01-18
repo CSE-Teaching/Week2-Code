@@ -9,10 +9,13 @@ NETWORK = 10.1.76.0/24
 MPIRUN_FLAGS = --map-by node --mca btl self,tcp --mca btl_tcp_if_include $(NETWORK) 
 DEBUG = 
 
-default: mpi-ring1
+default: mpi_hello mpi-ring1 
+
+mpi_hello: mpi_hello.c
+	$(MPICC) -o mpi_hello -std=c99 mpi_hello.c 
 
 mpi-ring1: mpi-ring1.c cs160String.o 
-	$(MPICC) -o mpi-ring1 mpi-ring1.c cs160String.o -lm
+	$(MPICC) -o mpi-ring1 mpi-ring1.c cs160String.o 
 
 cs160String.o : cs160String.c cs160String.h
 	$(CC) -c cs160String.c
