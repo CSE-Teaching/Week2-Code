@@ -14,6 +14,9 @@ default: mpi_hello mpi-ring1 mpi_trap1 mpi_trap2
 mpi_trap%: mpi_trap%.c
 	$(MPICC) -o $@ -std=c99 $< 
 
+mpi_output: mpi_output.c
+	$(MPICC) -o mpi_output -std=c99 mpi_output.c 
+
 mpi_hello: mpi_hello.c
 	$(MPICC) -o mpi_hello -std=c99 mpi_hello.c 
 
